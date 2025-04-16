@@ -128,17 +128,16 @@
     
   }
 
-  .header-image{
-    animation: header-image-animation linear;
-    animation-timeline: view();
-    animation-range: exit;
-    }
-    
-    @keyframes header-image-animation{
-      25% { opacity: 1, }
-      85%, 100% { opacity: 0; scale: 1.3}
-    }
+  
 }
 
 
-
+::-webkit-scrollbar
+  {
+      width: 0.05rem;
+  }
+  
+  ::-webkit-scrollbar-thumb
+  {
+      background-color: transparent;
+  }

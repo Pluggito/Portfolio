@@ -1,30 +1,38 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { motion, useInView } from "framer-motion";
 import '../globals.css'
 
-const ThreeJSModelOnBackground = ({
+interface ThreeJSModelProps {
+  backgroundImage: string;
+  modelPath: string;
+  modelPosition: { x: number; y: number; z: number };
+  modelRotation: { x: number; y: number; z: number };
+  modelScale: number;
+}
+
+const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
   backgroundImage,
   modelPath,
   modelPosition,
   modelRotation,
   modelScale,
 }) => {
-  const mountRef = useRef(null);
-  const modelRef = useRef(null);
-  const mixerRef = useRef(null);
+  const mountRef = useRef<HTMLDivElement | null>(null);
+  const modelRef = useRef<THREE.Group | null>(null);
+  const mixerRef = useRef<THREE.AnimationMixer | null>(null);
   const clockRef = useRef(new THREE.Clock());
-  const animationFrameRef = useRef(null);
-  const sceneRef = useRef(null);
-  const cameraRef = useRef(null);
+  const animationFrameRef = useRef<number | null>(null);
+  
+  // Explicitly type sceneRef to ensure TypeScript validation
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  
   const [loadedBackground, setLoadedBackground] = useState(false);
   
-
   // Lazy load background image
-  const handleIntersection = (entries, observer) => {
+  const handleIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         setLoadedBackground(true);
@@ -49,6 +57,8 @@ const ThreeJSModelOnBackground = ({
   // Scene setup and model loading
   useEffect(() => {
     const currentMount = mountRef.current;
+    if (!currentMount) return;
+
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
@@ -130,7 +140,7 @@ const ThreeJSModelOnBackground = ({
     }
 
     // Create a custom idle animation
-    const createIdleAnimation = (model) => {
+    const createIdleAnimation = (model: THREE.Group) => {
       mixerRef.current = new THREE.AnimationMixer(model);
 
       const positionKF = new THREE.VectorKeyframeTrack(
@@ -173,7 +183,7 @@ const ThreeJSModelOnBackground = ({
     };
 
     // Animation loop
-    const startAnimationLoop = (scene, camera, renderer) => {
+    const startAnimationLoop = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer) => {
       const animate = () => {
         if (mixerRef.current) {
           const delta = clockRef.current.getDelta();
@@ -184,7 +194,10 @@ const ThreeJSModelOnBackground = ({
           modelRef.current.rotation.y += 0.002;
         }
 
-        renderer.render(scene, camera);
+        if (sceneRef.current) {
+          renderer.render(sceneRef.current, camera);
+        }
+
         animationFrameRef.current = requestAnimationFrame(animate);
       };
 
@@ -208,7 +221,7 @@ const ThreeJSModelOnBackground = ({
           }
         }
 
-        renderer.render(sceneRef.current, cameraRef.current);
+        renderer.render(sceneRef.current as THREE.Scene, cameraRef.current);
       }
     };
 
@@ -230,8 +243,6 @@ const ThreeJSModelOnBackground = ({
 
   const headerRef = useRef(null)
   const isInView = useInView(headerRef, {once: false})
-
-
 
   return (
     <motion.div

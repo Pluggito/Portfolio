@@ -26,7 +26,7 @@ export default function Home() {
       >
     {/* 3D Model Background */}
     <ThreeJSModelOnBackground
-        backgroundImage="/adrien-olichon-RCAhiGJsUUE-unsplash.jpg"
+        backgroundImage="/adrien-olichon-RCAhiGJsUUE-unsplash-min.jpg"
         modelPath="/3d/tenhun_falling_spaceman_fanart.glb"
         modelPosition={{ x: 1.7, y: 0, z: 1.1 }}
         modelRotation={{ x: 20, y: -30, z: 5 }}
