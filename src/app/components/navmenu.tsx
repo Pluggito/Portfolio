@@ -5,8 +5,13 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const Tab = ({ children, setPosition }) => {
-    const ref = useRef(null);
+interface TabProps {
+    children: React.ReactNode;
+    setPosition: (position: { left: number; width: number; opacity: number }) => void;
+}
+
+const Tab: React.FC<TabProps> = ({ children, setPosition }) => {
+    const ref = useRef<HTMLLIElement | null>(null);
   
     return (
       <li
