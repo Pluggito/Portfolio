@@ -131,6 +131,13 @@
   
 }
 
+.text{
+  -webkit-text-stroke: 2px black;
+  color: transparent;
+  mix-blend-mode: multiply;
+  text-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px;
+}
+
 
 ::-webkit-scrollbar
   {

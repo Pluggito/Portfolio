@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Toggle } from "@/components/ui/toggle"
 import { Home, User, Briefcase, Mail, FileText, Instagram, Twitter, Linkedin, Github, MoreHorizontal } from "lucide-react"
+import '../globals.css'
 
 const navItems = [
   { name: "Home", href: "/", icon: Home },
@@ -38,14 +39,15 @@ const MobileMenu = () => {
 
   return (
     <div className="fixed inset-0 z-50 pointer-events-none md:hidden">
-      <div className="absolute top-4 right-4 pointer-events-auto">
+      <div className="absolute flex items-center top-4 right-4 pointer-events-auto">
+        <h1 className="text-xl text bg-transparent">CAMO</h1>
         <Toggle
           pressed={isOpen}
           onPressedChange={toggleMenu}
           className="rounded-full bg-black text-white h-12 w-12 text-2xl shadow-lg"
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
-          <MoreHorizontal size={25} strokeWidth={1.5}/>
+          <MoreHorizontal size={30} strokeWidth={1.5}/>
         </Toggle>
       </div>
 

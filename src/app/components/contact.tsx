@@ -72,7 +72,7 @@ const Contact = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#b30d0d]">Get In Touch</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to discuss potential opportunities? I&apos;d love to hear from you.
+          Open to roles, collabs, or just tech convos. Let’s connect!
           </p>
         </motion.div>
 
