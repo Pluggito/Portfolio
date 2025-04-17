@@ -7,6 +7,8 @@ import ThreeJSModelOnBackground from "./threejsmodel";
 import { motion } from "framer-motion";
 import MobileMenu from "./mobilemenu";
 
+
+
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { motion, useInView } from "framer-motion";
-import '../globals.css'
+import "../globals.css";
 
 interface ThreeJSModelProps {
   backgroundImage: string;
@@ -24,16 +24,19 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
   const mixerRef = useRef<THREE.AnimationMixer | null>(null);
   const clockRef = useRef(new THREE.Clock());
   const animationFrameRef = useRef<number | null>(null);
-  
+
   // Explicitly type sceneRef to ensure TypeScript validation
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  
+
   const [loadedBackground, setLoadedBackground] = useState(false);
-  
+
   // Lazy load background image
-  const handleIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-    entries.forEach(entry => {
+  const handleIntersection = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setLoadedBackground(true);
         observer.disconnect();
@@ -71,7 +74,12 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    const camera = new THREE.PerspectiveCamera(60, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      currentMount.clientWidth / currentMount.clientHeight,
+      0.1,
+      1000
+    );
     cameraRef.current = camera;
     camera.position.z = 7;
     camera.position.x = -1;
@@ -183,7 +191,11 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
     };
 
     // Animation loop
-    const startAnimationLoop = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer) => {
+    const startAnimationLoop = (
+      scene: THREE.Scene,
+      camera: THREE.PerspectiveCamera,
+      renderer: THREE.WebGLRenderer
+    ) => {
       const animate = () => {
         if (mixerRef.current) {
           const delta = clockRef.current.getDelta();
@@ -207,14 +219,19 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
     // Handle window resize
     const handleResize = () => {
       if (cameraRef.current && currentMount) {
-        cameraRef.current.aspect = currentMount.clientWidth / currentMount.clientHeight;
+        cameraRef.current.aspect =
+          currentMount.clientWidth / currentMount.clientHeight;
         cameraRef.current.updateProjectionMatrix();
         renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
 
         if (modelRef.current) {
           if (currentMount.clientWidth < 768) {
             modelRef.current.position.x = 0.5; // Bring model closer on mobile
-          }if(currentMount.clientWidth > 768 && currentMount.clientWidth < 1024){
+          }
+          if (
+            currentMount.clientWidth > 768 &&
+            currentMount.clientWidth < 1024
+          ) {
             modelRef.current.position.x = 1.5;
           } else if (currentMount.clientWidth > 1024) {
             modelRef.current.position.x = 2; // Reset on larger screens
@@ -241,8 +258,8 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
     };
   }, [modelPath, modelPosition, modelRotation, modelScale]);
 
-  const headerRef = useRef(null)
-  const isInView = useInView(headerRef, {once: false})
+  const headerRef = useRef(null);
+  const isInView = useInView(headerRef, { once: false });
 
   return (
     <motion.div
@@ -257,9 +274,10 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
         transition: "background-image 0.5s ease-in-out",
       }}
       ref={headerRef}
-      initial={{ opacity: 1, scale: 1}}
-      animate={isInView ? { opacity: 1, scale: 1 }: {opacity:0, scale: 1.5}}
-      transition={{ duration: 0.6, ease: 'easeInOut'}}>
+      initial={{ opacity: 1, scale: 1 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.5 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+    >
       <div
         ref={mountRef}
         style={{
