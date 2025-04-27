@@ -135,7 +135,7 @@ const Contact = () => {
               <div className="flex gap-3 items-center">
                 {/* Social Media Icons */}
                 <a
-                  href="#"
+                  href="https://github.com/Pluggito"
                   className="p-3 hover:scale-[1.1] hover:inverted-colors:fill-black transform duration-500 rounded-full transition ease-out"
                 >
                   <svg
@@ -148,13 +148,13 @@ const Contact = () => {
                   </svg>
                 </a>
                 <a
-                  href=""
+                  href="https://www.instagram.com/callmecarew_"
                   className="hover:scale-[1.1] transform duration-500 transition ease-out"
                 >
                   <InstagramIcon size={40} />
                 </a>
                 <a
-                  href=""
+                  href="https://www.linkedin/in/carew-abdul-mojeed"
                   className="hover:scale-[1.1] transform duration-500 transition ease-out ml-2"
                 >
                   <Linkedin size={40} />
