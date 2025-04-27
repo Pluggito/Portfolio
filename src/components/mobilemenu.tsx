@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Toggle } from "@/components/ui/toggle"
 import { Home, User, Briefcase, Mail, FileText, Instagram, Twitter, Linkedin, Github, MoreHorizontal } from "lucide-react"
-import '../globals.css'
+import '../app/global.css'
 
 const navItems = [
   { name: "Home", href: "/", icon: Home },
