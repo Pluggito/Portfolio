@@ -154,7 +154,7 @@ const Contact = () => {
                   <InstagramIcon size={40} />
                 </a>
                 <a
-                  href="https://www.linkedin/in/carew-abdul-mojeed"
+                  href="https://www.linkedin.com/in/carew-abdul-mojeed"
                   className="hover:scale-[1.1] transform duration-500 transition ease-out ml-2"
                 >
                   <Linkedin size={40} />
