@@ -1,4 +1,9 @@
-import { Code, Layout, Database, Smartphone, Bot, Globe, PenTool, Layers } from "lucide-react";
+import { Code, Layout, Database, Smartphone, Bot, Globe, PenTool, Layers} from "lucide-react";
+
+// Define a type for the skillIcons object
+type SkillIcons = {
+  [key: string]: React.ReactNode; // Or React.ReactNode if you are using JSX
+};
 
 export default function SkillsTimeline() {
   const skillCategories = [
@@ -36,7 +41,7 @@ export default function SkillsTimeline() {
     },
   ];
 
-  const skillIcons: { [key: string]: JSX.Element } = {
+  const skillIcons: SkillIcons = {
     "React": <Code size={16} />,
     "Next.js": <Code size={16} />,
     "TypeScript": <Code size={16} />,
@@ -93,7 +98,7 @@ export default function SkillsTimeline() {
               <div className="flex flex-wrap gap-2 mb-2">
                 {category.skills.map((skill) => (
                   <span key={skill} className="inline-flex items-center gap-2 px-3 py-1 border-2 border-gray-300 rounded-full text-sm text-accent transition hover:scale-105">
-                    {skillIcons[skill] ?? <Code size={16} />} {skill}
+                    {skillIcons[skill as keyof typeof skillIcons]} {skill}
                   </span>
                 ))}
               </div>
