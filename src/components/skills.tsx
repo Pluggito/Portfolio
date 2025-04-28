@@ -1,121 +1,106 @@
-'use client'
+import { Code, Layout, Database, Smartphone, Bot, Globe, PenTool, Layers } from "lucide-react";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Code, Palette, Layers, Database, Globe, Cpu, Smartphone, Lightbulb } from "lucide-react";
-
-const skills = [
-  {
-    name: "Frontend Development",
-    icon: <Code className="h-8 w-8" />,
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    name: "3D & Interactive",
-    icon: <Layers className="h-8 w-8" />,
-    items: ["Three.js", "WebGL", "GLSL", "React Three Fiber", "3D Modeling"],
-  },
-  {
-    name: "Design",
-    icon: <Palette className="h-8 w-8" />,
-    items: ["UI/UX Design", "Figma", "Adobe Creative Suite", "Motion Design", "Design Systems"],
-  },
-  {
-    name: "Backend Development",
-    icon: <Database className="h-8 w-8" />,
-    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
-  },
-  {
-    name: "Web Technologies",
-    icon: <Globe className="h-8 w-8" />,
-    items: ["Progressive Web Apps", "SEO", "Web Performance", "Accessibility", "Responsive Design"],
-  },
-  {
-    name: "AI & Machine Learning",
-    icon: <Cpu className="h-8 w-8" />,
-    items: ["AI SDK", "TensorFlow.js", "Natural Language Processing", "Computer Vision", "Generative AI"],
-  },
-  {
-    name: "Mobile Development",
-    icon: <Smartphone className="h-8 w-8" />,
-    items: ["React Native", "Expo", "Mobile-first Design", "App Performance", "Cross-platform"],
-  },
-  {
-    name: "Soft Skills",
-    icon: <Lightbulb className="h-8 w-8" />,
-    items: ["Problem Solving", "Communication", "Project Management", "Team Collaboration", "Client Relations"],
-  },
-];
-
-const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+export default function SkillsTimeline() {
+  const skillCategories = [
+    {
+      name: "Frontend Development",
+      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
+    {
+      name: "3D & Interactive",
+      skills: ["Three.js", "WebGL", "GLSL", "React Three Fiber", "3D Modeling"],
     },
+    {
+      name: "Design",
+      skills: ["UI/UX Design", "Figma", "Adobe Creative Suite", "Motion Design", "Design Systems"],
+    },
+    {
+      name: "Backend Development",
+      skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
+    },
+    {
+      name: "Web Technologies",
+      skills: ["Progressive Web Apps", "SEO", "Web Performance", "Accessibility", "Responsive Design"],
+    },
+    {
+      name: "AI & Machine Learning",
+      skills: ["AI SDK", "TensorFlow.js", "NLP", "Computer Vision", "Generative AI"],
+    },
+    {
+      name: "Mobile Development",
+      skills: ["React Native", "Expo", "Mobile-first Design", "App Performance", "Cross-platform"],
+    },
+    {
+      name: "Soft Skills",
+      skills: ["Problem Solving", "Communication", "Project Management", "Team Collaboration", "Client Relations"],
+    },
+  ];
+
+  const skillIcons: { [key: string]: JSX.Element } = {
+    "React": <Code size={16} />,
+    "Next.js": <Code size={16} />,
+    "TypeScript": <Code size={16} />,
+    "Tailwind CSS": <Layout size={16} />,
+    "Framer Motion": <Layout size={16} />,
+    "Three.js": <Globe size={16} />,
+    "WebGL": <Globe size={16} />,
+    "GLSL": <Globe size={16} />,
+    "React Three Fiber": <Globe size={16} />,
+    "3D Modeling": <Globe size={16} />,
+    "UI/UX Design": <PenTool size={16} />,
+    "Figma": <PenTool size={16} />,
+    "Adobe Creative Suite": <PenTool size={16} />,
+    "Motion Design": <PenTool size={16} />,
+    "Design Systems": <Layers size={16} />,
+    "Node.js": <Database size={16} />,
+    "Express": <Database size={16} />,
+    "PostgreSQL": <Database size={16} />,
+    "MongoDB": <Database size={16} />,
+    "REST APIs": <Database size={16} />,
+    "Progressive Web Apps": <Globe size={16} />,
+    "SEO": <Globe size={16} />,
+    "Web Performance": <Globe size={16} />,
+    "Accessibility": <Globe size={16} />,
+    "Responsive Design": <Globe size={16} />,
+    "AI SDK": <Bot size={16} />,
+    "TensorFlow.js": <Bot size={16} />,
+    "NLP": <Bot size={16} />,
+    "Computer Vision": <Bot size={16} />,
+    "Generative AI": <Bot size={16} />,
+    "React Native": <Smartphone size={16} />,
+    "Expo": <Smartphone size={16} />,
+    "Mobile-first Design": <Smartphone size={16} />,
+    "App Performance": <Smartphone size={16} />,
+    "Cross-platform": <Smartphone size={16} />,
   };
 
   return (
-    <section className="py-20 px-4 md:px-8 " id="skills">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#b30d0d]">Skills & Expertise</h2>
-          <p className="text-lg text-muted-foreground font-grotesk  max-w-2xl mx-auto">
-            My technical toolkit and areas of expertise that I bring to every project.
-          </p>
-        </motion.div>
+    <section className="max-w-3xl mx-auto py-20 px-6">
+      <h2 className="text-4xl font-bold mb-4 text-center text-[#b30d0d]">Skills & Expertise</h2>
+      <p className="text-center text-muted-foreground mb-16 max-w-lg mx-auto">
+        My technical toolkit and areas of expertise
+      </p>
 
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 px-3 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className=" rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-600 bg-[linear-gradient(120deg, rgba(255,255,255,0.5)),rgba(0,0,0,0.4),#b30d0d] cursor-pointer hover:scale-[1.05] hover:border-white"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">{skill.icon}</div>
-                <h3 className="text-xl font-semibold font-grotesk ">{skill.name}</h3>
-              </div>
-              <ul className="space-y-2">
-                {skill.items.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-secondary"></span>
-                    <span className="text-muted-foreground font-grotesk ">{item}</span>
-                  </li>
+      <div className="relative border-l border-gray-200 ml-3 md:ml-6 pl-8 md:pl-12 space-y-12">
+        {skillCategories.map((category) => (
+          <div key={category.name} className="relative">
+            {/* Timeline dot */}
+            <div className="absolute w-4 h-4 border-2 border-gray-300 rounded-full -left-[34px] md:-left-[42px]" />
+
+            {/* Content */}
+            <div>
+              <h3 className="text-xl font-medium mb-4">{category.name}</h3>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {category.skills.map((skill) => (
+                  <span key={skill} className="inline-flex items-center gap-2 px-3 py-1 border-2 border-gray-300 rounded-full text-sm text-accent transition hover:scale-105">
+                    {skillIcons[skill] ?? <Code size={16} />} {skill}
+                  </span>
                 ))}
-              </ul>
-            </motion.div>
-          ))}
-        </motion.div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default Skills; 
+}

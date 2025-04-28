@@ -49,6 +49,16 @@ const projects = [
     tags: ["React", "Gemini API"],
     url: "https://valentine-messages.vercel.app/",
   },
+  {
+    id: "4",
+    title: "Dailies",
+    description: "A social media platform focused on capturing daily moments. Users can post quick updates, share photos, and connect with friends in a minimalist, distraction-free environment. Features include daily posting limits, chronological feeds, and a focus on authenticity over curated perfection.",
+    image: "/Screenshot 2025-04-28 203132.png",
+    date: "April 2025",
+    tags: ["Next.js", "Supabase", "Prisma", "Tailwind CSS"],
+    url: "https://dailies-social.vercel.app/"
+  }
+  
   
 ]
 
