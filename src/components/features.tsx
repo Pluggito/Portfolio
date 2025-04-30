@@ -16,7 +16,7 @@ interface Project {
   date: string
   tags: string[]
   url: string,
-  souceCode: string
+  sourceCode: string
 }
 
 const projects = [
@@ -185,7 +185,7 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
             </Link>
           </Button>
           <Button asChild variant={'secondary'} className="mt-8 w-fit gap-1 ml-4">
-            <Link href={`${project.souceCode}`} target="_blank" rel="noopener noreferrer">  
+            <Link href={`${project.sourceCode}`} target="_blank" rel="noopener noreferrer">  
               Source Code <ArrowUpRight className="h-4 w-4" />
             </Link>
           </Button>
