@@ -15,7 +15,8 @@ interface Project {
   image: string
   date: string
   tags: string[]
-  url: string
+  url: string,
+  souceCode: string
 }
 
 const projects = [
@@ -28,6 +29,7 @@ const projects = [
     date: "January 2025",
     tags: ["React", "Django", "AWS", "Tailwind CSS"],
     url: "https://moooments.vercel.app/",
+    sourceCode: "https://github.com/Pluggito/Moooments"
   },
   {
     id: "2",
@@ -38,6 +40,7 @@ const projects = [
     date: "October 2024",
     tags: ["React", "Tailwind CSS", "Flutterwave"],
     url: "https://hatsoff-wears.vercel.app/",
+    sourceCode: "https://github.com/Pluggito/HATSOFFwears"
   },
   {
     id: "3",
@@ -48,6 +51,7 @@ const projects = [
     date: "February 2025",
     tags: ["React", "Gemini API"],
     url: "https://valentine-messages.vercel.app/",
+    sourceCode: "https://github.com/Pluggito/Valentine-Messages"
   },
   {
     id: "4",
@@ -56,7 +60,8 @@ const projects = [
     image: "/Screenshot 2025-04-28 203132.png",
     date: "April 2025",
     tags: ["Next.js", "Supabase", "Prisma", "Tailwind CSS"],
-    url: "https://dailies-social.vercel.app/"
+    url: "https://dailies-social.vercel.app/",
+    sourceCode: "https://github.com/Pluggito/Dailies"
   }
   
   
@@ -175,8 +180,13 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
         </motion.div>
         <motion.div variants={itemVariants}>
           <Button asChild className="mt-8 w-fit gap-1">
-            <Link href={project.url} target="_blank" rel="noopener noreferrer">
+            <Link href={`${project.url}`} target="_blank" rel="noopener noreferrer">
               View Project <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </Button>
+          <Button asChild variant={'secondary'} className="mt-8 w-fit gap-1 ml-4">
+            <Link href={`${project.souceCode}`} target="_blank" rel="noopener noreferrer">  
+              Source Code <ArrowUpRight className="h-4 w-4" />
             </Link>
           </Button>
         </motion.div>
