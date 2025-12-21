@@ -1,5 +1,12 @@
-import type React from "react"
-import { Code, Globe, Layers, Database, PenTool } from "lucide-react"
+import type React from "react";
+import {
+  Code,
+  Globe,
+  Layers,
+  Database,
+  PenTool,
+  Smartphone,
+} from "lucide-react";
 
 export default function SkillsSection() {
   return (
@@ -9,7 +16,9 @@ export default function SkillsSection() {
           <h1 className="text-5xl font-bold text-[#b30d0d] nline-block mb-4">
             Skills & Expertise
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">My technical toolkit and areas of expertise</p>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            My technical toolkit and areas of expertise
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -18,23 +27,41 @@ export default function SkillsSection() {
             icon={<Code className="w-8 h-8" />}
             title="Frontend Development"
             color="bg-white/90 text-black"
-            skills={["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]}
+            skills={[
+              "React",
+              "Next.js",
+              "TypeScript",
+              "Tailwind CSS",
+              "Framer Motion",
+            ]}
           />
 
           {/* 3D & Interactive */}
-          <SkillCard
+          {/*<SkillCard
             icon={<Globe className="w-8 h-8" />}
             title="3D & Interactive"
             color="bg-white/90 text-black"
-            skills={["Three.js", "WebGL", "GLSL", "React Three Fiber", "3D Modeling"]}
-          />
+            skills={[
+              "Three.js",
+              "WebGL",
+              "GLSL",
+              "React Three Fiber",
+              "3D Modeling",
+            ]}
+          />*/}
 
           {/* Design */}
           <SkillCard
             icon={<PenTool className="w-8 h-8" />}
             title="Design"
             color="bg-white/90 text-black"
-            skills={["UI/UX Design", "Figma", "Adobe Creative Suite", "Motion Design", "Design Systems"]}
+            skills={[
+              "UI/UX Design",
+              "Figma",
+              "Adobe Creative Suite",
+              "Motion Design",
+              "Design Systems",
+            ]}
           />
 
           {/* Backend Development */}
@@ -42,7 +69,27 @@ export default function SkillsSection() {
             icon={<Database className="w-8 h-8" />}
             title="Backend Development"
             color="bg-white/90 text-black"
-            skills={["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"]}
+            skills={[
+              "Node.js",
+              "Express",
+              "PostgreSQL",
+              "MongoDB",
+              "REST APIs",
+            ]}
+          />
+
+          {/* Mobile Development */}
+          <SkillCard
+            icon={<Smartphone className="w-8 h-8" />}
+            title="Mobile Development"
+            color="bg-white/90 text-black"
+            skills={[
+              "React Native",
+              "Flutter",
+              "iOS (Swift)",
+              "Android (Kotlin)",
+              "Expo",
+            ]}
           />
 
           {/* Web Technologies */}
@@ -50,7 +97,12 @@ export default function SkillsSection() {
             icon={<Globe className="w-8 h-8" />}
             title="Web Technologies"
             color="bg-white/90 text-black"
-            skills={["Progressive Web Apps", "SEO", "Web Performance", "Accessibility"]}
+            skills={[
+              "Progressive Web Apps",
+              "SEO",
+              "Web Performance",
+              "Accessibility",
+            ]}
           />
 
           {/* Additional Skills */}
@@ -58,19 +110,25 @@ export default function SkillsSection() {
             icon={<Layers className="w-8 h-8" />}
             title="Additional Skills"
             color="bg-white/90 text-black"
-            skills={["Git & Version Control", "CI/CD Pipelines", "Testing", "Agile Methodologies", "Prisma" ]}
+            skills={[
+              "Git & Version Control",
+              "CI/CD Pipelines",
+              "Testing",
+              "Agile Methodologies",
+              "Prisma",
+            ]}
           />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 interface SkillCardProps {
-  icon: React.ReactNode
-  title: string
-  color: string
-  skills: string[]
+  icon: React.ReactNode;
+  title: string;
+  color: string;
+  skills: string[];
 }
 
 function SkillCard({ icon, title, color, skills }: SkillCardProps) {
@@ -94,5 +152,5 @@ function SkillCard({ icon, title, color, skills }: SkillCardProps) {
 
       <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </div>
-  )
+  );
 }

@@ -1,27 +1,56 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import Link from "next/link"
-import { ArrowUpRight, Calendar, Tag } from "lucide-react"
-import { motion, useInView } from "framer-motion"
+import { useRef } from "react";
+import Link from "next/link";
+import { ArrowUpRight, Calendar, Tag } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface Project {
-  id: string
-  title: string
-  description: string
-  image: string
-  date: string
-  tags: string[]
-  url: string,
-  sourceCode: string
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  tags: string[];
+  url: string;
+  sourceCode: string;
 }
 
 const projects = [
   {
     id: "1",
+    title: "Dailies",
+    description:
+      "A social media platform focused on capturing daily moments. Users can post quick updates, share photos, and connect with friends in a minimalist, distraction-free environment. Features include daily posting limits, chronological feeds, and a focus on authenticity over curated perfection.",
+    image: "/Screenshot 2025-12-21 151114.png",
+    date: "April 2025",
+    tags: ["Next.js", "Supabase", "Prisma", "Tailwind CSS", "WebSockets"],
+    url: "https://dailies-social.vercel.app",
+    sourceCode: "https://github.com/Pluggito/Dailies",
+  },
+  {
+    id: "2",
+    title: "Chowvest",
+    description:
+      "A food savings platform that helps users turn their savings into guaranteed food on their table every season. Features include savings tracking, wallet management, food basket goals with progress monitoring, automated delivery requests, and multi-item goal planning for staple foods like rice, beans, and garri.",
+    image: "/Screenshot 2025-12-21 145444.png",
+    date: "December 2025",
+    tags: [
+      "Next.js",
+      "Paystack",
+      "Tailwind CSS",
+      "Financial Tech",
+      "Supabase",
+      "NextAuth",
+    ],
+    url: "https://chowvest-prod.vercel.app",
+    sourceCode: "https://github.com/Pluggito/chowvest_production",
+  },
+  {
+    id: "3",
     title: "Moooments",
     description:
       "A privacy-first photo-sharing platform for events. Attendees can upload photos on the event day, share private albums, and enjoy seamless file optimization. Features shared albums, photo upload limits, organizer permissions, and storage upgrade options.",
@@ -29,19 +58,9 @@ const projects = [
     date: "January 2025",
     tags: ["React", "Django", "AWS", "Tailwind CSS"],
     url: "https://moooments.vercel.app/",
-    sourceCode: "https://github.com/Pluggito/Moooments"
+    sourceCode: "https://github.com/Pluggito/Moooments",
   },
-  {
-    id: "2",
-    title: "HatsOffwears",
-    description:
-      "An elegant fashion storefront with a strong brand identity. Designed with a focus on aesthetics and simplicity. Includes a responsive image gallery, floating product labels, and Flutterwave integration for seamless checkout.",
-    image: "/Screenshot 2025-04-15 232347.png",
-    date: "October 2024",
-    tags: ["React", "Tailwind CSS", "Flutterwave"],
-    url: "https://hatsoff-wears.vercel.app/",
-    sourceCode: "https://github.com/Pluggito/HATSOFFwears"
-  },
+
   {
     id: "3",
     title: "AI Generated Messages App",
@@ -51,21 +70,9 @@ const projects = [
     date: "February 2025",
     tags: ["React", "Gemini API"],
     url: "https://valentine-messages.vercel.app/",
-    sourceCode: "https://github.com/Pluggito/Valentine-Messages"
+    sourceCode: "https://github.com/Pluggito/Valentine-Messages",
   },
-  {
-    id: "4",
-    title: "Dailies",
-    description: "A social media platform focused on capturing daily moments. Users can post quick updates, share photos, and connect with friends in a minimalist, distraction-free environment. Features include daily posting limits, chronological feeds, and a focus on authenticity over curated perfection.",
-    image: "/Screenshot 2025-04-28 203132.png",
-    date: "April 2025",
-    tags: ["Next.js", "Supabase", "Prisma", "Tailwind CSS"],
-    url: "https://dailies-social.vercel.app/",
-    sourceCode: "https://github.com/Pluggito/Dailies"
-  }
-  
-  
-]
+];
 
 const Features = () => {
   return (
@@ -78,9 +85,12 @@ const Features = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#b30d0d]">Featured Projects</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#b30d0d]">
+            Featured Projects
+          </h1>
           <p className="text-lg text-muted-foreground font-grotesk max-w-2xl mx-auto">
-            A selection of my recent work. Each project represents a unique challenge and solution.
+            A selection of my recent work. Each project represents a unique
+            challenge and solution.
           </p>
         </motion.div>
         <section className="py-16">
@@ -94,12 +104,18 @@ const Features = () => {
         </section>
       </div>
     </main>
-  )
-}
+  );
+};
 
-const ProjectItem = ({ project, index }: { project: Project; index: number }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
+const ProjectItem = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -110,7 +126,7 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -119,7 +135,7 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" },
     },
-  }
+  };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.95 },
@@ -128,7 +144,7 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
       scale: 1,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  }
+  };
 
   return (
     <motion.div
@@ -136,7 +152,9 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className={`flex flex-col gap-8 md:flex-row ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+      className={`flex flex-col gap-8 md:flex-row ${
+        index % 2 === 1 ? "md:flex-row-reverse" : ""
+      }`}
     >
       <motion.div className="flex-1" variants={imageVariants}>
         <div className="overflow-hidden rounded-lg">
@@ -148,17 +166,29 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
         </div>
       </motion.div>
       <div className="flex flex-1 flex-col justify-center">
-        <motion.div variants={itemVariants} className="flex items-center gap-2 text-sm text-muted-foreground">
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center gap-2 text-sm text-muted-foreground"
+        >
           <Calendar className="h-4 w-4" />
           {project.date}
         </motion.div>
-        <motion.h3 variants={itemVariants} className="mt-2 text-2xl font-bold md:text-3xl">
+        <motion.h3
+          variants={itemVariants}
+          className="mt-2 text-2xl font-bold md:text-3xl"
+        >
           {project.title}
         </motion.h3>
-        <motion.p variants={itemVariants} className="mt-4 text-muted-foreground">
+        <motion.p
+          variants={itemVariants}
+          className="mt-4 text-muted-foreground"
+        >
           {project.description}
         </motion.p>
-        <motion.div variants={itemVariants} className="mt-6 flex flex-wrap gap-2">
+        <motion.div
+          variants={itemVariants}
+          className="mt-6 flex flex-wrap gap-2"
+        >
           {project.tags.map((tag, tagIndex) => (
             <motion.div
               key={tag}
@@ -180,19 +210,31 @@ const ProjectItem = ({ project, index }: { project: Project; index: number }) =>
         </motion.div>
         <motion.div variants={itemVariants}>
           <Button asChild className="mt-8 w-fit gap-1">
-            <Link href={`${project.url}`} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={`${project.url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               View Project <ArrowUpRight className="h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild variant={'secondary'} className="mt-8 w-fit gap-1 ml-4">
-            <Link href={`${project.sourceCode}`} target="_blank" rel="noopener noreferrer">  
+          <Button
+            asChild
+            variant={"secondary"}
+            className="mt-8 w-fit gap-1 ml-4"
+          >
+            <Link
+              href={`${project.sourceCode}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Source Code <ArrowUpRight className="h-4 w-4" />
             </Link>
           </Button>
         </motion.div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default Features
+export default Features;
