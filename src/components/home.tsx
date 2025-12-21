@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import Button2 from "./button2";
 import Navbar from "./navmenu";
 import ThreeJSModelOnBackground from "./threejsmodel";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import MobileMenu from "./mobilemenu";
-
-
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,7 +17,7 @@ export default function Home() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -30,7 +28,7 @@ export default function Home() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0 },
   };
