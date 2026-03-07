@@ -62,15 +62,15 @@ const projects = [
   },
 
   {
-    id: "3",
-    title: "AI Generated Messages App",
+    id: "4",
+    title: "Lovegram",
     description:
-      "A cute and interactive Valentine's countdown site that generates personalized heartfelt messages using AI. Features a countdown timer, bunny animation, and Gemini API-powered love notes after entering your crush's name.",
-    image: "/Screenshot 2025-04-15 235823.png",
-    date: "February 2025",
-    tags: ["React", "Gemini API"],
-    url: "https://valentine-messages.vercel.app/",
-    sourceCode: "https://github.com/Pluggito/Valentine-Messages",
+      "A beautiful, interactive web application that generates personalized Valentine's Day messages using AI. Create heartfelt messages for your crush, partner, situationship, or even your bros!",
+    image: "/Screenshot 2026-02-28 at 22.18.29.png",
+    date: "February 2026",
+    tags: ["Nextjs", "Open-ai API", "Gemini API", "Tailwind CSS"],
+    url: "https://lovegram-ruddy.vercel.app/",
+    sourceCode: "https://github.com/Pluggito/valentine-v2",
   },
 ];
 

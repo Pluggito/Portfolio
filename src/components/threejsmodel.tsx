@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import '../app/globals.css'
 
 interface ThreeJSModelProps {
@@ -203,7 +203,22 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
         }
 
         if (modelRef.current) {
-          modelRef.current.rotation.y += 0.002;
+          // Default continuous rotation
+          const baseRotationY = modelRef.current.userData.baseRotationY || 0;
+          modelRef.current.userData.baseRotationY = baseRotationY + 0.002;
+          
+          // Apply Lerp for smooth mouse parallax
+          if (modelRef.current.userData.targetRotationX !== undefined) {
+             modelRef.current.rotation.x += (modelRef.current.userData.targetRotationX - modelRef.current.rotation.x) * 0.05;
+             modelRef.current.rotation.y += (modelRef.current.userData.targetRotationY + modelRef.current.userData.baseRotationY - modelRef.current.rotation.y) * 0.05;
+             modelRef.current.position.z += (modelRef.current.userData.targetZ - modelRef.current.position.z) * 0.05;
+          } else {
+             modelRef.current.rotation.y += 0.002;
+          }
+
+          // Apply Scroll linked transform
+          modelRef.current.rotation.y += scrollRotateY.get() * 0.1;
+          modelRef.current.position.y = modelPosition.y + scrollPositionY.get();
         }
 
         if (sceneRef.current) {
@@ -226,15 +241,17 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
 
         if (modelRef.current) {
           if (currentMount.clientWidth < 768) {
-            modelRef.current.position.x = 0.5; // Bring model closer on mobile
+            modelRef.current.position.x = 0; // Center on mobile
           }
           if (
             currentMount.clientWidth > 768 &&
             currentMount.clientWidth < 1024
           ) {
-            modelRef.current.position.x = 1.5;
+            modelRef.current.position.x = 0.5; // Slightly left on tablet
           } else if (currentMount.clientWidth > 1024) {
-            modelRef.current.position.x = 2; // Reset on larger screens
+            // Let the base modelPosition handle desktop, but ensure it doesn't overlap text
+             const distanceToCenter = currentMount.clientWidth / 2;
+             modelRef.current.position.x = Math.min(modelPosition.x, distanceToCenter / 400); // Dynamic responsive limit
           }
         }
 
@@ -260,6 +277,35 @@ const ThreeJSModelOnBackground: React.FC<ThreeJSModelProps> = ({
 
   const headerRef = useRef(null);
   const isInView = useInView(headerRef, { once: false });
+
+  // Adding scroll and mouse tracking for advanced parallax
+  const { scrollY } = useScroll();
+  const scrollRotateY = useTransform(scrollY, [0, 1000], [0, Math.PI]);
+  const scrollPositionY = useTransform(scrollY, [0, 1000], [0, 2]);
+
+  useEffect(() => {
+    // Parallax mouse move
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!modelRef.current) return;
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.clientY / window.innerHeight) * 2 + 1;
+      
+      // Target rotations and slightly change Z based on proximity to center
+      const targetRotationX = THREE.MathUtils.degToRad(modelRotation.x) + y * 0.2;
+      const targetRotationY = THREE.MathUtils.degToRad(modelRotation.y) + x * 0.4;
+      const distanceToCenter = Math.sqrt(x * x + y * y);
+      const targetZ = modelPosition.z + (1 - distanceToCenter) * 0.5;
+
+      // Smooth interpolation in the animation loop would be better, but we set raw values here for simplicity
+      // In animation loop, we will lerp these.
+      modelRef.current.userData.targetRotationX = targetRotationX;
+      modelRef.current.userData.targetRotationY = targetRotationY;
+      modelRef.current.userData.targetZ = targetZ;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [modelRotation, modelPosition]);
 
   return (
     <motion.div

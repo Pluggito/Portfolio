@@ -66,7 +66,7 @@ const Navbar = () => {
                 <p className="text-accent"></p>
             </div>*/}
         <ul
-          className="text-accent flex rounded-full shadow-lg shadow-amber-50/20 justify-between bg-transparent px-1 items-center gap-9"
+          className="text-accent flex rounded-full shadow-[0_0_15px_rgba(255,255,255,0.05)] justify-between bg-white/5 backdrop-blur-xl border border-white/10 px-1 items-center gap-9"
           onMouseLeave={() => {
             setPosition((prev) => ({ ...prev, opacity: 0 }));
           }}

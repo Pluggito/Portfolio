@@ -115,7 +115,7 @@ const About = () => {
                 asChild
                 className="mt-3 py-6 hover:border-accent-background hover:bg-background text-accent bg-inherit cursor-pointer shadow-lg"
               >
-                <Link href={`Resume 1.0.pdf`.trim()} target="_blank" download>
+                <Link href={`Resume 1.0 (1).pdf`.trim()} target="_blank" download>
                   Download Resume <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

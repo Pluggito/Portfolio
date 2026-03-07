@@ -6,6 +6,7 @@ import Navbar from "./navmenu";
 import ThreeJSModelOnBackground from "./threejsmodel";
 import { motion, Variants } from "framer-motion";
 import MobileMenu from "./mobilemenu";
+import CustomCursor from "./customcursor";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -35,6 +36,7 @@ export default function Home() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden" id="home">
+      <CustomCursor />
       {isMobile ? <MobileMenu /> : <Navbar />}
 
       <motion.div
@@ -45,9 +47,9 @@ export default function Home() {
         <ThreeJSModelOnBackground
           backgroundImage="/adrien-olichon-RCAhiGJsUUE-unsplash-min.jpg"
           modelPath="/3d/tenhun_falling_spaceman_fanart.glb"
-          modelPosition={{ x: 1.7, y: 0, z: 1.1 }}
+          modelPosition={{ x: 0.9, y: -0.8, z: 1.1 }}
           modelRotation={{ x: 20, y: -30, z: 5 }}
-          modelScale={1.8}
+          modelScale={2.1}
         />
       </motion.div>
 
@@ -63,9 +65,12 @@ export default function Home() {
       >
         <motion.h3
           variants={itemVariants}
-          className="text-base my-3 px-1 sm:my-1 sm:text-lg font-bold text-gray-300"
+          className="text-base my-3 px-1 sm:my-1 sm:text-lg font-bold text-gray-300 relative group"
         >
-          <span className="text-[#b30d0d]">Software</span> Developer
+          <span className="bg-gradient-to-r from-red-500 via-red-600 to-red-800 bg-[length:200%_auto] animate-gradient-text bg-clip-text text-transparent group-hover:from-red-400 group-hover:via-red-500 group-hover:to-red-700 transition-all duration-300">
+            Software
+          </span>{" "}
+          Developer
         </motion.h3>
 
         <motion.h1
@@ -73,16 +78,17 @@ export default function Home() {
           className="text-4xl sm:text-7xl font-extrabold leading-tight my-2 w-full font-inter"
         >
           Hey There, <br /> I'm{" "}
-          <span className="text-[#b30d0d] opacity-80">Carew</span>
+          <span className="bg-gradient-to-r from-red-500 via-red-600 to-red-800 bg-[length:200%_auto] animate-gradient-text bg-clip-text text-transparent opacity-90 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(239,68,68,0.5)] transition-all duration-300 cursor-default">
+            Carew
+          </span>
           <br />
         </motion.h1>
 
         <motion.h5
           variants={itemVariants}
-          className="max-w-md text-base font-grotesk px-1 sm:px-2"
+          className="max-w-md text-base font-grotesk px-1 sm:px-2 text-gray-400 font-medium"
         >
-          Great web design without functionality is like a sports car with no
-          engine
+          Stunning interfaces. Unbreakable logic. Engineering the web of tomorrow.
         </motion.h5>
 
         <motion.a
