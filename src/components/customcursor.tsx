@@ -8,12 +8,17 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const updateMousePosition = (e: MouseEvent | TouchEvent) => {
+      if ("touches" in e && e.touches.length > 0) {
+        setMousePosition({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+      } else if ("clientX" in e) {
+        setMousePosition({ x: (e as MouseEvent).clientX, y: (e as MouseEvent).clientY });
+      }
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const handleInteract = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLElement;
+      if (!target) return;
       // Check if hovering over links, buttons, or nav items
       if (
         target.closest("a") ||
@@ -28,11 +33,15 @@ export default function CustomCursor() {
     };
 
     window.addEventListener("mousemove", updateMousePosition);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("touchmove", updateMousePosition, { passive: true });
+    window.addEventListener("mouseover", handleInteract);
+    window.addEventListener("touchstart", handleInteract, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("touchmove", updateMousePosition);
+      window.removeEventListener("mouseover", handleInteract);
+      window.removeEventListener("touchstart", handleInteract);
     };
   }, []);
 
