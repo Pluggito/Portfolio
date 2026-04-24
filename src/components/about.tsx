@@ -116,7 +116,7 @@ const About = () => {
                 className="mt-3 py-6 hover:border-accent-background hover:bg-background text-accent bg-inherit cursor-pointer shadow-lg"
               >
                 <Link
-                  href={`Resume_Abdul_Mojeed.docx`.trim()}
+                  href={`Resume_Abdul_Mojeed.docx.pdf`.trim()}
                   target="_blank"
                   download
                 >
@@ -130,5 +130,4 @@ const About = () => {
     </section>
   );
 };
-
 export default About;
