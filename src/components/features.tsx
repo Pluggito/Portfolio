@@ -22,17 +22,6 @@ interface Project {
 const projects = [
   {
     id: "1",
-    title: "Dailies",
-    description:
-      "A social media platform focused on capturing daily moments. Users can post quick updates, share photos, and connect with friends in a minimalist, distraction-free environment. Features include daily posting limits, chronological feeds, and a focus on authenticity over curated perfection.",
-    image: "/Screenshot 2025-12-21 151114.png",
-    date: "April 2025",
-    tags: ["Next.js", "Supabase", "Prisma", "Tailwind CSS", "WebSockets"],
-    url: "https://dailies-social.vercel.app",
-    sourceCode: "https://github.com/Pluggito/Dailies",
-  },
-  {
-    id: "2",
     title: "Chowvest",
     description:
       "A food savings platform that helps users turn their savings into guaranteed food on their table every season. Features include savings tracking, wallet management, food basket goals with progress monitoring, automated delivery requests, and multi-item goal planning for staple foods like rice, beans, and garri.",
@@ -50,7 +39,29 @@ const projects = [
     sourceCode: "https://github.com/Pluggito/chowvest_production",
   },
   {
+    id: "2",
+    title: "Doculens",
+    description:
+      "An AI-powered Document Intelligence Platform that automatically classifies, processes, and extracts structured data from documents like invoices, receipts, and CVs. Features include an OCR extraction pipeline, a seamless web dashboard, and a native mobile application.",
+    image: "/Screenshot 2026-07-02 at 15.30.44.png",
+    date: "July 2026",
+    tags: ["Next.js", "React Native", "Gemini AI", "Turborepo", "Tailwind CSS", "Neon DB"],
+    url: "https://docu-lens-web.vercel.app/",
+    sourceCode: "https://github.com/Pluggito/document-intel-monorepo",
+  },
+   {
     id: "3",
+    title: "Dailies",
+    description:
+      "A social media platform focused on capturing daily moments. Users can post quick updates, share photos, and connect with friends in a minimalist, distraction-free environment. Features include daily posting limits, chronological feeds, and a focus on authenticity over curated perfection.",
+    image: "/Screenshot 2025-12-21 151114.png",
+    date: "April 2025",
+    tags: ["Next.js", "Supabase", "Prisma", "Tailwind CSS", "WebSockets"],
+    url: "https://dailies-social.vercel.app",
+    sourceCode: "https://github.com/Pluggito/Dailies",
+  },
+  {
+    id: "4",
     title: "Moooments",
     description:
       "A privacy-first photo-sharing platform for events. Attendees can upload photos on the event day, share private albums, and enjoy seamless file optimization. Features shared albums, photo upload limits, organizer permissions, and storage upgrade options.",
@@ -60,9 +71,8 @@ const projects = [
     url: "https://moooments.vercel.app/",
     sourceCode: "https://github.com/Pluggito/Moooments",
   },
-
   {
-    id: "4",
+    id: "5",
     title: "Lovegram",
     description:
       "A beautiful, interactive web application that generates personalized Valentine's Day messages using AI. Create heartfelt messages for your crush, partner, situationship, or even your bros!",
@@ -72,6 +82,7 @@ const projects = [
     url: "https://lovegram-ruddy.vercel.app/",
     sourceCode: "https://github.com/Pluggito/valentine-v2",
   },
+  
 ];
 
 const Features = () => {
