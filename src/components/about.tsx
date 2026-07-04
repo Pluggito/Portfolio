@@ -30,10 +30,8 @@ const About = () => {
     },
   };
 
-  console.log("hey Nextjs");
-
   return (
-    <section className="py-20 px-4 md:px-8 " id="about">
+    <section className="py-20 px-4 md:px-8" id="about">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -47,11 +45,11 @@ const About = () => {
             className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden"
           >
             <Image
-              src={`/pexels-view2020-5508355.jpg `.trimEnd()}
-              alt="Profile"
+              src="/pexels-view2020-5508355.jpg"
+              alt="Carew Abdul Mojeed"
               width={700}
               height={700}
-              className="object-cover object-center w-full h-full "
+              className="object-cover object-center w-full h-full"
             />
           </motion.div>
 
@@ -66,57 +64,61 @@ const About = () => {
             <motion.div
               variants={itemVariants}
               className="h-1 w-20 bg-secondary"
-            ></motion.div>
-            <div className="">
-              <motion.p
-                variants={itemVariants}
-                className="text-lg font-grotesk  text-muted-foreground"
-              >
-                I'm a creative developer with a passion for building beautiful,
-                functional digital experiences. With expertise in both design
-                and development, I bridge the gap between aesthetics and
-                functionality.
-              </motion.p>
-            </div>
-            <div>
-              <motion.p
-                variants={itemVariants}
-                className="text-lg font-grotesk  text-muted-foreground"
-              >
-                My journey in tech began in 2022, and since then, I've worked
-                with startups, agencies, and established companies to create
-                impactful digital solutions. I specialize in interactive web
-                experiences and motion design.
-              </motion.p>
-            </div>
+            />
 
-            <motion.div variants={itemVariants} className="pt-4 font-grotesk ">
-              <h3 className="text-xl font-semibold mb-4 ">My Approach</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-secondary"></span>
-                  <span>User-centered design thinking</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-secondary"></span>
-                  <span>Performance-focused development</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-secondary"></span>
-                  <span>Continuous learning and improvement</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-secondary"></span>
-                  <span>Collaborative problem solving</span>
-                </li>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg font-grotesk text-muted-foreground"
+            >
+              I&apos;m a Full-Stack Engineer and product thinker based in Lagos,
+              Nigeria. I build production-ready applications that solve real
+              problems — from fintech platforms handling real transactions to
+              AI-powered tools that make complex technology accessible to
+              everyday users.
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg font-grotesk text-muted-foreground"
+            >
+              Currently serving as CTO of{" "}
+              <Link
+                href="https://chowvest-prod.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#b30d0d] font-medium hover:underline"
+              >
+                Chowvest
+              </Link>
+              , a food price-locking platform helping low-income households in
+              Lagos fight food inflation. I&apos;ve been shipping full-stack
+              products since 2022 across fintech, social, and AI — specialising
+              in React, Next.js, Node.js, and scalable architecture.
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="pt-4 font-grotesk">
+              <h3 className="text-xl font-semibold mb-4">My Approach</h3>
+              <ul className="space-y-3">
+                {[
+                  "Product thinking before engineering",
+                  "Shipping fast, iterating on real feedback",
+                  "Building for users who don't look like me",
+                  "Clean architecture that scales when it needs to",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-secondary flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
+
               <Button
                 variant="outline"
                 asChild
-                className="mt-3 py-6 hover:border-accent-background hover:bg-background text-accent bg-inherit cursor-pointer shadow-lg"
+                className="mt-6 py-6 hover:border-accent-background hover:bg-background text-accent bg-inherit cursor-pointer shadow-lg"
               >
                 <Link
-                  href={`Resume_Abdul_Mojeed_Updated.pdf`.trim()}
+                  href="/Resume_Carew_Abdul_Mojeed.docx.pdf"
                   target="_blank"
                   download
                 >
@@ -130,4 +132,5 @@ const About = () => {
     </section>
   );
 };
+
 export default About;

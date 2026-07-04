@@ -23,29 +23,26 @@ const projects = [
   {
     id: "1",
     title: "Chowvest",
-    description:
-      "A food savings platform that helps users turn their savings into guaranteed food on their table every season. Features include savings tracking, wallet management, food basket goals with progress monitoring, automated delivery requests, and multi-item goal planning for staple foods like rice, beans, and garri.",
+    description: "A fintech food savings platform built for low-income households in Lagos battling food inflation. Users lock in today's commodity prices, save gradually over time, and receive delivery at the locked price — even if market prices rise. Built as CTO, featuring price-lock mechanics, Paystack payment integration, wallet management, automated delivery requests, and an admin dashboard for order fulfillment.",
     image: "/Screenshot 2025-12-21 145444.png",
     date: "December 2025",
     tags: [
-      "Next.js",
-      "Paystack",
-      "Tailwind CSS",
-      "Financial Tech",
-      "Supabase",
-      "NextAuth",
-    ],
+  "Next.js", "Paystack", "Tailwind CSS", 
+  "Fintech", "Prisma", "NextAuth", "Price-Lock Tech"
+],
     url: "https://chowvest-prod.vercel.app",
     sourceCode: "https://github.com/Pluggito/chowvest_production",
   },
   {
     id: "2",
-    title: "Doculens",
-    description:
-      "An AI-powered Document Intelligence Platform that automatically classifies, processes, and extracts structured data from documents like invoices, receipts, and CVs. Features include an OCR extraction pipeline, a seamless web dashboard, and a native mobile application.",
+    title: "Doculens Studio",
+   description: "A cross-platform AI Document Intelligence Platform that automatically detects, classifies, and extracts structured data from any document — invoices, CVs, contracts, receipts — with no manual categorization required. Features a two-stage AI pipeline with cross-validated OCR and Gemini Vision for up to 99% confidence, Human-in-the-Loop verification, and a shared codebase across web and iOS via Turborepo monorepo.",
     image: "/Screenshot 2026-07-02 at 15.30.44.png",
     date: "July 2026",
-    tags: ["Next.js", "React Native", "Gemini AI", "Turborepo", "Tailwind CSS", "Neon DB"],
+    tags: [
+  "Next.js", "Expo", "AI Integration", 
+  "Turborepo", "Tailwind CSS", "Neon DB", "OCR", "HITL"
+],
     url: "https://docu-lens-web.vercel.app/",
     sourceCode: "https://github.com/Pluggito/document-intel-monorepo",
   },
